@@ -1,3 +1,21 @@
+#landing-description {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 60vh;
+}
+
+.container {
+  background-color: #bd8136;
+  opacity: 0.85;
+  padding: 30px;
+  border-radius: 30px;
+}
+#landing-description h1 {
+  font-family: "Anton", sans-serif;
+  font-size: 70px;
+  color: black;
+}
 .slideshow {
   position: fixed;
   width: 100%;
@@ -29,19 +47,19 @@
 }
 .slideshow li:nth-child(2) {
   background-image: url("./images/GOT.jpg");
-  animation-delay: 5s;
+  animation-delay: 7.5s;
 }
 .slideshow li:nth-child(3) {
   background-image: url("./images/Friends.jpg");
-  animation-delay: 10s;
+  animation-delay: 12.5s;
 }
 .slideshow li:nth-child(4) {
   background-image: url("./images/MorningShow.jpeg");
-  animation-delay: 15s;
+  animation-delay: 17.5s;
 }
 .slideshow li:nth-child(5) {
   background-image: url("./images/Power.jpeg");
-  animation-delay: 20s;
+  animation-delay: 22.5s;
 }
 
 @keyframes imageAnimation {

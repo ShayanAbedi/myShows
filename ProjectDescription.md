@@ -7,7 +7,7 @@
     -MyShows helps you find the information about your favorite shows
     all in one place.
     -You can search by show name and it will display you the information
-    such as: Cast, when is the next episode, Gallery, news, etc.
+    such as Cast, when is the next episode, Gallery, news, etc.
 
 ## What is your motivation for creating this project?
 
@@ -36,10 +36,17 @@
     - If time permits I will add more functionalities and try to implement some stretch goals to my app.
 
 ## What project management tool will you use?
-  Trello
+
+Trello
+
 ## How often will you commit your code?
-  At least once a day
+
+At least once a day
+
 ## How will you test your web site?
-  Ask my friend to try it out.
+
+Ask my friend to try it out.
+
 ## How will you design the layout of your website? Will you use a wireframing tool? Will you draw it on paper?
-  I will possibly use wireframe
+
+I will possibly use wireframe

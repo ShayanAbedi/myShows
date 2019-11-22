@@ -35,11 +35,11 @@
     - I will style the application page.
     - If time permits I will add more functionalities and try to implement some stretch goals to my app.
 
-##What project management tool will you use?
+## What project management tool will you use?
   Trello
-##How often will you commit your code?
+## How often will you commit your code?
   At least once a day
-##How will you test your web site?
+## How will you test your web site?
   Ask my friend to try it out.
-##How will you design the layout of your website? Will you use a wireframing tool? Will you draw it on paper?
+## How will you design the layout of your website? Will you use a wireframing tool? Will you draw it on paper?
   I will possibly use wireframe

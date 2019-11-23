@@ -13,6 +13,19 @@
     <title>MyShows</title>
   </head>
   <body>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        MY
+        <img
+          src="./logo.png"
+          width="50"
+          height="50"
+          class="d-inline-block align-center"
+          alt="MYSHOWS"
+        />
+        SHOWS
+      </a>
+    </nav>
     <div
       class="jumbotron"
       style="text-align:center; margin: 100px 100px 0 100px;"
@@ -28,7 +41,13 @@
         within the larger container.
       </p>
       <div>
-        <input type="text" placeholder="Search" /><button
+        <input
+          type="search"
+          id="mysearch"
+          placeholder="Search"
+          value=""
+        /><button
+          onclick="getit()"
           style="margin-left:10px; margin-bottom: 2px;"
           class="btn btn-primary btn-sm"
           type="submit"
@@ -37,5 +56,10 @@
         </button>
       </div>
     </div>
+    <div id="container">
+      <ul id="showlist"></ul>
+      <img id="showimg" alt="img" />
+    </div>
+    <script src="./myshows.js"></script>
   </body>
 </html>

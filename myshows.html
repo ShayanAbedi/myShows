@@ -10,6 +10,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./assets/stylesheets/app.css" />
     <title>MyShows</title>
   </head>
   <body>
@@ -26,40 +27,11 @@
         SHOWS
       </a>
     </nav>
-    <div
-      class="jumbotron"
-      style="text-align:center; margin: 100px 100px 0 100px;"
-    >
-      <h1 class="display-4">Find out about your favorite shows</h1>
-      <p class="lead">
-        This is a simple hero unit, a simple jumbotron-style component for
-        calling extra attention to featured content or information.
-      </p>
-      <hr class="my-4" />
-      <p>
-        It uses utility classes for typography and spacing to space content out
-        within the larger container.
-      </p>
-      <div>
-        <input
-          type="search"
-          id="mysearch"
-          placeholder="Search"
-          value=""
-        /><button
-          onclick="getit()"
-          style="margin-left:10px; margin-bottom: 2px;"
-          class="btn btn-primary btn-sm"
-          type="submit"
-        >
-          Search
-        </button>
-      </div>
-    </div>
-    <div id="container">
-      <ul id="showlist"></ul>
-      <img id="showimg" alt="img" />
-    </div>
-    <script src="./myshows.js"></script>
+
+    <form id="content">
+      <input type="text" name="input" class="input" id="search-input" />
+      <button type="reset" class="search" id="search-btn"></button>
+    </form>
+    <script src="./app.js"></script>
   </body>
 </html>

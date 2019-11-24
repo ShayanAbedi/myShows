@@ -10,10 +10,15 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/60f321e899.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./assets/stylesheets/app.css" />
+
     <title>MyShows</title>
   </head>
-  <body>
+  
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="#">
         MY
@@ -27,11 +32,38 @@
         SHOWS
       </a>
     </nav>
-
-    <form id="content">
-      <input type="text" name="input" class="input" id="search-input" />
-      <button type="reset" class="search" id="search-btn"></button>
-    </form>
+    <div class="wrap">
+      <div class="search">
+        <input type="text" id="searchTerm" placeholder="Search for the show" />
+        <button onclick="getit()" type="submit" class="searchButton">
+          <i class="fa fa-search fa-sm"></i>
+        </button>
+      </div>
+    </div>
+    <div id="container">
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img
+            src=""
+            id="card-img"
+            alt="show_name"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 id="card-title"></h5>
+            <p id="card-text">
+            </p>
+            <p class="card-txt">
+              <small id="text-muted">Rating: </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+    </body>
     <script src="./app.js"></script>
   </body>
 </html>

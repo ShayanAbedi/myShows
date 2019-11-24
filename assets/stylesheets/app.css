@@ -8,7 +8,7 @@ body {
 
 .search {
   width: 100%;
-  position: inherit;
+  position: relative;
   display: flex;
 }
 
@@ -61,7 +61,7 @@ body {
   /* height: 100%; */
 }
 #card-title {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #card-text {

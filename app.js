@@ -11,9 +11,12 @@ var getit = async () => {
   var searched = document.getElementById("searchTerm").value;
   const response = await fetch(API_URL + searched);
   const json = await response.json();
+  var summary = json.summary.replace(/<p>|<\/p>|<b>|<\/b>|<em>|<\/em>/gi, "");
+  summary = summary.substring(0, 200);
   document.getElementById("card-img").setAttribute("src", json.image.medium);
-  document.getElementById("card-title").textContent = json.name;
-  document.getElementById("card-text").textContent = json.summary;
-  document.getElementById("text-muted").textContent += json.rating.average;
+  document.getElementById("c-title").textContent = json.name;
+  document.getElementById("card-text").textContent = summary + "...";
+  document.getElementById("text-muted").textContent =
+    "Rating: " + json.rating.average;
   document.getElementById("container").style.visibility = "visible";
 };

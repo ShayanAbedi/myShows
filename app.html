@@ -35,7 +35,7 @@
     <div class="wrap">
       <div class="search">
         <input type="text" id="searchTerm" placeholder="Search for the show" />
-        <button onclick="getit()" type="submit" class="searchButton">
+        <button type="submit" class="searchButton">
           <i class="fa fa-search fa-sm"></i>
         </button>
       </div>
@@ -43,7 +43,20 @@
     <div class="error"></div>
     <div id="container">
             
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card text-white bg-dark mb-3" style="max-width: 540px;">
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <a class="nav-link active showSum" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cast</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
       <div class="row no-gutters">
         <div class="col-md-4">
           <img
@@ -55,15 +68,17 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h3 id="card-title"><strong id="c-title"></strong></h3>
+            <h4 id="card-title"><strong id="c-title"></strong></h4>
             <p id="card-text">
             </p>
             <p class="card-txt">
-              <small id="text-muted"></small>
+              <small class="text-muted rating"></small>
             </p>
-            <p>
-                
-            </p>
+         
+              <div class="card-footer">
+                <small class="text-muted nextEp"></small>
+              </div>  
+       
           </div>
         </div>
       </div>

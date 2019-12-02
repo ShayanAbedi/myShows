@@ -1,37 +1,75 @@
-const API_URL = "http://api.tvmaze.com/singlesearch/shows?q=";
+const apiUrl = "http://api.tvmaze.com/singlesearch/shows?q=";
+const searchButton = document.querySelector(".searchButton");
+const searched = document.getElementById("searchTerm");
 const errormsg = document.querySelector(".error");
 const card = document.getElementById("container");
-var getit = async () => {
-  var searched = document.getElementById("searchTerm").value;
-  const response = await fetch(API_URL + searched); //make a GET request (by default) to the URL
+const showCover = document.getElementById("card-img");
+const showSummary = document.querySelector(".showSum");
+const title = document.getElementById("c-title");
+const description = document.getElementById("card-text");
+const rating = document.querySelector(".rating");
+const nextEp = document.querySelector(".nextEp");
+
+searchButton.addEventListener("click", e => {
+  const searchedTerm = searched.value;
+  callApi(searchedTerm);
+  e.preventDefault();
+});
+
+const callApi = async input => {
+  const response = await fetch(apiUrl + input); //make a GET request (by default) to the URL
   if (!response.ok) {
-    // throw new Error("Network response was not ok.");
-    errormsg.innerHTML += `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    Show Not Found - Please Try Again! 
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>`;
+    dispalyFlashMsg();
   }
   const json = await response.json();
-  var summary = json.summary.replace(
+  displayInfo(json);
+  nextEpInfo(json.id);
+};
+
+const dispalyFlashMsg = () => {
+  errormsg.innerHTML += `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+       Show Not Found - Please Try Again!
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>`;
+};
+
+const displayInfo = data => {
+  card.style.visibility = "visible";
+  showCover.setAttribute("src", data.image.medium);
+  title.textContent = data.name;
+  showSummary.textContent = data.name;
+
+  let summary = data.summary.replace(
     /<p>|<\/p>|<b>|<\/b>|<em>|<\/em>|<i>|<\/i>/gi,
     ""
   );
   summary = summary.substring(0, 200);
-  document.getElementById("card-img").setAttribute("src", json.image.medium);
-  document.getElementById("c-title").textContent = json.name;
-  document.getElementById("card-text").textContent = summary + "...";
-  document.getElementById("text-muted").textContent =
-    "Rating: " + json.rating.average;
-  document.getElementById("container").style.visibility = "visible";
+  description.textContent = summary + "...";
 
-  json.genres.forEach(element => {
-    var genres = document.querySelector(".list-group");
-    var entry = document.createElement("li");
-    entry.classList.add("list-group-item");
-    entry.style.width = "211px";
-    entry.appendChild(document.createTextNode(element));
-    genres.appendChild(entry);
-  });
+  rating.textContent = "Rating: " + data.rating.average;
+
+  //   json.genres.forEach(element => {
+  //   var genres = document.querySelector(".list-group");
+  //   var entry = document.createElement("li");
+  //   entry.classList.add("list-group-item");
+  //   entry.style.width = "211px";
+  //   entry.appendChild(document.createTextNode(element));
+  //   genres.appendChild(entry);
+  // });
+};
+
+const nextEpInfo = async id => {
+  const response = await fetch(
+    "http://api.tvmaze.com/shows/" + id + "?embed=nextepisode"
+  );
+  const json = await response.json();
+  if (json.status === "Running") {
+    let time = json.schedule.time;
+    let days = json.schedule.days[0];
+    nextEp.textContent = "Next Episode: " + days + " at " + time;
+  } else {
+    nextEp.textContent = "Show ended";
+  }
 };

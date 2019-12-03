@@ -9,6 +9,7 @@ const title = document.getElementById("c-title");
 const description = document.getElementById("card-text");
 const rating = document.querySelector(".rating");
 const nextEp = document.querySelector(".nextEp");
+const castBtn = document.querySelector(".cast");
 
 searchButton.addEventListener("click", e => {
   const searchedTerm = searched.value;
@@ -47,8 +48,12 @@ const displayInfo = data => {
   );
   summary = summary.substring(0, 200);
   description.textContent = summary + "...";
-
-  rating.textContent = "Rating: " + data.rating.average;
+  let dataRating = data.rating.average;
+  if (dataRating == null) {
+    rating.textContent = "";
+  } else {
+    rating.textContent = "Rating: " + dataRating;
+  }
 
   //   json.genres.forEach(element => {
   //   var genres = document.querySelector(".list-group");
@@ -72,4 +77,20 @@ const nextEpInfo = async id => {
   } else {
     nextEp.textContent = "Show ended";
   }
+};
+
+showSummary.addEventListener("click", e => {
+  castBtn.classList.remove("active");
+  showSummary.classList.add("active");
+  e.preventDefault();
+});
+castBtn.addEventListener("click", e => {
+  showCast();
+  e.preventDefault();
+});
+
+const showCast = () => {
+  showSummary.classList.remove("active");
+  castBtn.classList.add("active");
+  title.textContent = "Cast";
 };

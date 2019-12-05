@@ -2,6 +2,7 @@ const apiUrl = "http://api.tvmaze.com/singlesearch/shows?q=";
 const searchButton = document.querySelector(".searchButton");
 const searched = document.getElementById("searchTerm");
 const errormsg = document.querySelector(".error");
+const loading = document.querySelector(".loading");
 const card = document.getElementById("container");
 const showCover = document.getElementById("card-img");
 const showSummary = document.querySelector(".showSum");
@@ -11,8 +12,15 @@ const rating = document.querySelector(".rating");
 const nextEp = document.querySelector(".nextEp");
 const castBtn = document.querySelector(".cast");
 
+loading.style.display = "none";
+card.style.display = "none";
+
 searchButton.addEventListener("click", e => {
+  loading.style.display = "";
+  errormsg.innerHTML = "";
+  errormsg.classList.remove("hidden");
   const searchedTerm = searched.value;
+  searched.value = "";
   callApi(searchedTerm);
   e.preventDefault();
 });
@@ -25,9 +33,13 @@ const callApi = async input => {
   const json = await response.json();
   displayInfo(json);
   nextEpInfo(json.id);
+  loading.style.display = "none";
 };
 
 const dispalyFlashMsg = () => {
+  errormsg.classList.add("hidden");
+  loading.style.display = "none";
+  card.style.display = "none";
   errormsg.innerHTML += `<div class="alert alert-danger alert-dismissible fade show" role="alert">
        Show Not Found - Please Try Again!
        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -37,7 +49,7 @@ const dispalyFlashMsg = () => {
 };
 
 const displayInfo = data => {
-  card.style.visibility = "visible";
+  card.style.display = "";
   showCover.setAttribute("src", data.image.medium);
   title.textContent = data.name;
   showSummary.textContent = data.name;

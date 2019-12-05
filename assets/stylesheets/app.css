@@ -60,7 +60,6 @@ body {
 }
 #container {
   margin-top: 500px;
-  visibility: hidden;
 }
 .card {
   margin: 0 auto; /* Added */
@@ -79,4 +78,42 @@ body {
   text-align: center;
   margin: 10px auto;
   width: 400px;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 10s, opacity 10s linear;
+}
+
+.main {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: 200px;
+  box-shadow: 0px 0px 5px 2px black;
+  border-radius: 10px;
+}
+.tile {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  box-shadow: 0px 0px 4px 2px black;
+  border-radius: 10px;
+  background: #d38312;
+}
+.tile1 {
+  animation: load 1s infinite alternate linear;
+  border-radius: 10px;
+}
+
+@keyframes load {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 90%;
+  }
 }

@@ -8,12 +8,14 @@ const showCover = document.getElementById("card-img");
 const showSummary = document.querySelector(".showSum");
 const title = document.getElementById("c-title");
 const description = document.getElementById("card-text");
+const showSite = document.querySelector(".site");
 const rating = document.querySelector(".rating");
 const nextEp = document.querySelector(".nextEp");
 const castBtn = document.querySelector(".cast");
 
 loading.style.display = "none";
 card.style.display = "none";
+showSite.style.display = "none";
 
 searchButton.addEventListener("click", e => {
   loading.style.display = "";
@@ -60,6 +62,12 @@ const displayInfo = data => {
   );
   summary = summary.substring(0, 200);
   description.textContent = summary + "...";
+
+  if (data.officialSite != null) {
+    showSite.style.display = "";
+    showSite.href = data.officialSite;
+  }
+
   let dataRating = data.rating.average;
   if (dataRating == null) {
     rating.textContent = "";

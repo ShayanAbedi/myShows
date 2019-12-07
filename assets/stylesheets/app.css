@@ -117,3 +117,13 @@ body {
     left: 90%;
   }
 }
+
+.cast-col {
+  float: left;
+  width: 33.33%;
+  padding: 7px;
+}
+.cast-row {
+  padding-left: 50px;
+  padding-right: 50px;
+}

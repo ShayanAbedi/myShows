@@ -19,7 +19,7 @@
     <title>MyShows</title>
   </head>
   
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light ">
       <a class="navbar-brand" href="./index.html">
         MY
         <img
@@ -50,28 +50,30 @@
             
     <div class="card text-white bg-dark mb-3" style="max-width: 540px;">
       <div class="card-header">
-        <ul class="nav nav-pills card-header-pills">
+        <ul class="nav nav-pills card-header-pills" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active showSum" href="#"></a>
+            <a class="nav-link active showSum" href="#summary" role="tab" data-toggle="tab"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link cast" href="#">Cast</a>
+            <a class="nav-link cast" href="#cast" role="tab" data-toggle="tab">Cast</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" role="tab" data-toggle="tab">Unknown</a>
           </li>
         </ul>
       </div>
-      <div class="row no-gutters">
-        <div class="col-md-4">
+      <div class="tab-content">
+      <div role="tabpanel" class="row no-gutters tab-pane fade in active" id="summary">
+        <div class="col-md-12">
           <img
             src=""
             id="card-img"
+            class="show-img"
             alt="show_name"
           />
           <ul class="list-group"></ul>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="card-body">
             <h5 id="card-title"><strong id="c-title"></strong></h5>
             <p id="card-text">
@@ -89,6 +91,56 @@
           </div>
         </div>
       </div>
+      <div role="tabpanel" class="row tab-pane fade" id="cast">
+        <div class="cast-row">
+            <div class="column">
+              <img
+                src=""
+                class="cast-img-one cast-col"
+                alt="show_name"
+              />
+           
+            </div>
+            <div class="column">
+              <img
+                src=""
+                class="cast-img-two cast-col"
+                alt="show_name"
+                />
+            </div>
+            <div class="column">
+              <img
+                src=""
+                class="cast-img-three cast-col"
+                alt="show_name"
+              />
+            </div>
+            
+        </div>
+        <div class="cast-row">
+          <div class="column">
+            <p class="cast-person-one cast-col"></p>
+          </div>
+          <div class="column">
+              <p class="cast-person-two cast-col"></p>
+          </div>
+          <div class="column">
+              <p class="cast-person-three cast-col"></p>
+          </div>
+        </div>
+        <div class="cast-row">
+            <div class="column">
+              <p class="cast-char-one cast-col"></p>
+            </div>
+            <div class="column">
+                <p class="cast-char-two cast-col"></p>
+            </div>
+            <div class="column">
+                <p class="cast-char-three cast-col"></p>
+            </div>
+          </div>
+      </div>
+    </div>
     </div>
 </div>
 

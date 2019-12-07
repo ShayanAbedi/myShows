@@ -1,17 +1,21 @@
+/*
+Summary page 
+*/
+
 const apiUrl = "http://api.tvmaze.com/singlesearch/shows?q=";
 const searchButton = document.querySelector(".searchButton");
 const searched = document.getElementById("searchTerm");
 const errormsg = document.querySelector(".error");
 const loading = document.querySelector(".loading");
 const card = document.getElementById("container");
-const showCover = document.getElementById("card-img");
+const showCover = document.querySelector(".show-img");
 const showSummary = document.querySelector(".showSum");
 const title = document.getElementById("c-title");
 const description = document.getElementById("card-text");
 const showSite = document.querySelector(".site");
 const rating = document.querySelector(".rating");
 const nextEp = document.querySelector(".nextEp");
-const castBtn = document.querySelector(".cast");
+// const castBtn = document.querySelector(".cast");
 
 loading.style.display = "none";
 card.style.display = "none";
@@ -35,6 +39,7 @@ const callApi = async input => {
   const json = await response.json();
   displayInfo(json);
   nextEpInfo(json.id);
+  getCast(json.id);
   loading.style.display = "none";
 };
 
@@ -99,18 +104,39 @@ const nextEpInfo = async id => {
   }
 };
 
-showSummary.addEventListener("click", e => {
-  castBtn.classList.remove("active");
-  showSummary.classList.add("active");
-  e.preventDefault();
-});
-castBtn.addEventListener("click", e => {
-  showCast();
-  e.preventDefault();
-});
+/*
+Cast page 
+*/
+const castImgOne = document.querySelector(".cast-img-one");
+const castImgTwo = document.querySelector(".cast-img-two");
+const castImgThree = document.querySelector(".cast-img-three");
+const castPersonOne = document.querySelector(".cast-person-one");
+const castPersonTwo = document.querySelector(".cast-person-two");
+const castPersonThree = document.querySelector(".cast-person-three");
+const castCharacterOne = document.querySelector("cast-char-one");
+const castCharacterTwo = document.querySelector("cast-char-two");
+const castCharacterThree = document.querySelector("cast-char-three");
 
-const showCast = () => {
-  showSummary.classList.remove("active");
-  castBtn.classList.add("active");
-  title.textContent = "Cast";
+const getCast = async id => {
+  const response = await fetch(" http://api.tvmaze.com/shows/" + id + "/cast");
+  const json = await response.json();
+  // //iterate through the json response
+  // for (let i = 0; i < 4; i++) {
+  //   //for each character
+  //     //display image
+  //     castImgOne.setAttribute("src", json[i].person.image.medium);
+  //     //display person's name
+  //     //display the character's name
+  // }
+  castImgOne.setAttribute("src", json[0].person.image.medium);
+  castImgTwo.setAttribute("src", json[1].person.image.medium);
+  castImgThree.setAttribute("src", json[2].person.image.medium);
+
+  castPersonOne.textContent = json[0].person.name;
+  castPersonTwo.textContent = json[1].person.name;
+  castPersonThree.textContent = json[2].person.name;
+
+  castCharacterOne.textContent = "shayan";
+  castCharacterTwo.textContent = json[1].character.name;
+  castCharacterThree.textContent = json[2].character.name;
 };

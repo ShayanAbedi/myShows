@@ -15,7 +15,6 @@ const description = document.getElementById("card-text");
 const showSite = document.querySelector(".site");
 const rating = document.querySelector(".rating");
 const nextEp = document.querySelector(".nextEp");
-// const castBtn = document.querySelector(".cast");
 
 loading.style.display = "none";
 card.style.display = "none";
@@ -79,15 +78,6 @@ const displayInfo = data => {
   } else {
     rating.textContent = "Rating: " + dataRating;
   }
-
-  //   json.genres.forEach(element => {
-  //   var genres = document.querySelector(".list-group");
-  //   var entry = document.createElement("li");
-  //   entry.classList.add("list-group-item");
-  //   entry.style.width = "211px";
-  //   entry.appendChild(document.createTextNode(element));
-  //   genres.appendChild(entry);
-  // });
 };
 
 const nextEpInfo = async id => {
@@ -113,30 +103,28 @@ const castImgThree = document.querySelector(".cast-img-three");
 const castPersonOne = document.querySelector(".cast-person-one");
 const castPersonTwo = document.querySelector(".cast-person-two");
 const castPersonThree = document.querySelector(".cast-person-three");
-const castCharacterOne = document.querySelector("cast-char-one");
-const castCharacterTwo = document.querySelector("cast-char-two");
-const castCharacterThree = document.querySelector("cast-char-three");
+const castCharacterOne = document.querySelector(".cast-char-one");
+const castCharacterTwo = document.querySelector(".cast-char-two");
+const castCharacterThree = document.querySelector(".cast-char-three");
 
 const getCast = async id => {
   const response = await fetch(" http://api.tvmaze.com/shows/" + id + "/cast");
   const json = await response.json();
-  // //iterate through the json response
-  // for (let i = 0; i < 4; i++) {
-  //   //for each character
-  //     //display image
-  //     castImgOne.setAttribute("src", json[i].person.image.medium);
-  //     //display person's name
-  //     //display the character's name
-  // }
+
   castImgOne.setAttribute("src", json[0].person.image.medium);
   castImgTwo.setAttribute("src", json[1].person.image.medium);
   castImgThree.setAttribute("src", json[2].person.image.medium);
 
   castPersonOne.textContent = json[0].person.name;
+  castPersonOne.setAttribute("href", json[0].person.url);
   castPersonTwo.textContent = json[1].person.name;
+  castPersonTwo.setAttribute("href", json[1].person.url);
   castPersonThree.textContent = json[2].person.name;
+  castPersonThree.setAttribute("href", json[2].person.url);
 
-  castCharacterOne.textContent = "shayan";
+  console.log(json[0].character.name);
+
+  castCharacterOne.textContent = json[0].character.name;
   castCharacterTwo.textContent = json[1].character.name;
   castCharacterThree.textContent = json[2].character.name;
 };

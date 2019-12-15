@@ -1,73 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/60f321e899.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="./assets/stylesheets/app.css" />
 
-    <title>MyShows</title>
-  </head>
-  
-    <nav class="navbar navbar-light bg-light ">
-      <a class="navbar-brand" href="./index.html">
-        MY
-        <img
-          src="./logo.png"
-          width="50"
-          height="50"
-          class="d-inline-block align-center"
-          alt="MYSHOWS"
-        />
-        SHOWS
-      </a>
-    </nav>
-    <div class="wrap">
-      <div class="search">
-        <input type="text" id="searchTerm" placeholder="Search for the show" />
-        <button type="submit" class="searchButton" >
-          <i class="fa fa-search fa-sm"></i>
-        </button>
-      </div>
-     
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/60f321e899.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/stylesheets/app.css" />
 
-    <div class="error"></div>
-    <div class="main loading">
-      <div class="tile tile1"></div>
+  <title>MyShows</title>
+</head>
+
+<nav class="navbar navbar-light bg-light ">
+  <a class="navbar-brand" href="./index.html">
+    MY
+    <img src="./logo.png" width="50" height="50" class="d-inline-block align-center" alt="MYSHOWS" />
+    SHOWS
+  </a>
+</nav>
+<form>
+  <div class="wrap">
+    <div class="search">
+      <input type="text" id="searchTerm" placeholder="Search for the show" />
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search fa-sm"></i>
+      </button>
     </div>
-    <div id="container">
-            
-    <div class="card text-white bg-dark mb-3" style="max-width: 540px;">
-      <div class="card-header">
-        <ul class="nav nav-pills card-header-pills" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link showSum active" href="#summary" role="tab" data-toggle="tab"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link cast" href="#cast" role="tab" data-toggle="tab">Cast</a>
-          </li>
-        </ul>
-      </div>
-      <div class="tab-content">
+  </div>
+</form>
+
+
+<div class="error"></div>
+<div class="main loading">
+  <div class="tile tile1"></div>
+</div>
+<div id="container">
+
+  <div class="card text-white bg-dark mb-3" style="max-width: 540px;">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link showSum active" href="#summary" role="tab" data-toggle="tab"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cast" href="#cast" role="tab" data-toggle="tab">Cast</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content">
       <div role="tabpanel" class="row no-gutters tab-pane fade show active" id="summary">
         <div class="col-md-12">
-          <img
-            src=""
-            id="card-img"
-            class="show-img"
-            alt="show_name"
-          />
+          <img src="" id="card-img" class="show-img" alt="show_name" />
           <ul class="list-group"></ul>
         </div>
         <div class="col-md-12">
@@ -76,77 +61,68 @@
             <p id="card-text">
             </p>
             <p class="card-txt">
-              <a class="site" href="">Official Website</a> 
+              <a class="site" href="" target="_blank">Official Website</a>
               <br>
               <small class="text-muted rating"></small>
             </p>
-            
-              <div class="card-footer">
-                <small class="text-muted nextEp"></small>
-              </div>  
-       
+
+            <div class="card-footer">
+              <small class="text-muted nextEp"></small>
+            </div>
+
           </div>
         </div>
       </div>
       <div role="tabpanel" class="row tab-pane fade" id="cast">
         <div class="cast-row">
-            <div class="column">
-              <img
-                src=""
-                class="cast-img-one cast-col"
-                alt="show_name"
-              />
-           
-            </div>
-            <div class="column">
-              <img
-                src=""
-                class="cast-img-two cast-col"
-                alt="show_name"
-                />
-            </div>
-            <div class="column">
-              <img
-                src=""
-                class="cast-img-three cast-col"
-                alt="show_name"
-              />
-            </div>
-            
+          <div class="column">
+            <img src="" class="cast-img-one cast-col" alt="show_name" />
+
+          </div>
+          <div class="column">
+            <img src="" class="cast-img-two cast-col" alt="show_name" />
+          </div>
+          <div class="column">
+            <img src="" class="cast-img-three cast-col" alt="show_name" />
+          </div>
+
         </div>
         <div class="cast-row">
           <div class="column">
-            <a href="" class="cast-person-one cast-col"></a>
+            <a target="_blank" class="cast-person-one cast-col"></a>
           </div>
           <div class="column">
-              <a class="cast-person-two cast-col"></a>
+            <a target="_blank" class="cast-person-two cast-col"></a>
           </div>
           <div class="column">
-              <a class="cast-person-three cast-col"></a>
+            <a target="_blank" class="cast-person-three cast-col"></a>
           </div>
         </div>
         <div class="cast-row">
-            <div class="column">
-              <small class="cast-char-one cast-col"></small>
-            </div>
-            <div class="column">
-                <small class="cast-char-two cast-col"></small>
-            </div>
-            <div class="column">
-                <small class="cast-char-three cast-col"></small>
-            </div>
+          <div class="column">
+            <small class="cast-char-one cast-col"></small>
           </div>
+          <div class="column">
+            <small class="cast-char-two cast-col"></small>
+          </div>
+          <div class="column">
+            <small class="cast-char-three cast-col"></small>
+          </div>
+        </div>
       </div>
 
     </div>
-    </div>
+  </div>
 </div>
 
 
-    
 <script src="./app.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
 </html>

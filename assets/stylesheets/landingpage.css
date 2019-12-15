@@ -53,7 +53,7 @@
   animation-delay: 7.5s;
 }
 .slideshow li:nth-child(3) {
-  background-image: url("./images/Friends.jpg");
+  background-image: url("./images/peaky.jpg");
   animation-delay: 12.5s;
 }
 .slideshow li:nth-child(4) {

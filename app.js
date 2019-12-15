@@ -1,11 +1,10 @@
 /*
-Summary page 
+Summary tab 
 */
-
 const apiUrl = "http://api.tvmaze.com/singlesearch/shows?q=";
 const searchButton = document.querySelector(".searchButton");
 const searched = document.getElementById("searchTerm");
-const errormsg = document.querySelector(".error");
+const errorMsg = document.querySelector(".error");
 const loading = document.querySelector(".loading");
 const card = document.getElementById("container");
 const showCover = document.querySelector(".show-img");
@@ -22,8 +21,8 @@ showSite.style.display = "none";
 
 searchButton.addEventListener("click", e => {
   loading.style.display = "";
-  errormsg.innerHTML = "";
-  errormsg.classList.remove("hidden");
+  errorMsg.innerHTML = "";
+  errorMsg.classList.remove("hidden");
   const searchedTerm = searched.value;
   searched.value = "";
   callApi(searchedTerm);
@@ -31,22 +30,26 @@ searchButton.addEventListener("click", e => {
 });
 
 const callApi = async input => {
-  const response = await fetch(apiUrl + input); //make a GET request (by default) to the URL
-  if (!response.ok) {
-    dispalyFlashMsg();
+  //error handling - flash message will be displayed
+  try {
+    const response = await fetch(apiUrl + input);
+    const json = await response.json();
+    displayInfo(json);
+    nextEpInfo(json.id);
+    getCast(json.id);
+    loading.style.display = "none";
+  } catch {
+    dispalyErrorMsg();
   }
-  const json = await response.json();
-  displayInfo(json);
-  nextEpInfo(json.id);
-  getCast(json.id);
-  loading.style.display = "none";
 };
 
-const dispalyFlashMsg = () => {
-  errormsg.classList.add("hidden");
+//this function displays the error flash message
+const dispalyErrorMsg = () => {
+  errorMsg.classList.add("hidden");
   loading.style.display = "none";
   card.style.display = "none";
-  errormsg.innerHTML += `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  errorMsg.innerHTML += `<div class="alert alert-danger alert-dismissible 
+       fade show" role="alert">
        Show Not Found - Please Try Again!
        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
          <span aria-hidden="true">&times;</span>
@@ -54,6 +57,7 @@ const dispalyFlashMsg = () => {
      </div>`;
 };
 
+//this function displays the title, image, summary, and rating for the show
 const displayInfo = data => {
   card.style.display = "";
   showCover.setAttribute("src", data.image.medium);
@@ -80,11 +84,14 @@ const displayInfo = data => {
   }
 };
 
+//api request to display the time and date of the next episode
 const nextEpInfo = async id => {
   const response = await fetch(
     "http://api.tvmaze.com/shows/" + id + "?embed=nextepisode"
   );
   const json = await response.json();
+
+  //check if the show still running - if not displays "Show ended"
   if (json.status === "Running") {
     let time = json.schedule.time;
     let days = json.schedule.days[0];
@@ -95,36 +102,54 @@ const nextEpInfo = async id => {
 };
 
 /*
-Cast page 
+Cast tab 
 */
-const castImgOne = document.querySelector(".cast-img-one");
-const castImgTwo = document.querySelector(".cast-img-two");
-const castImgThree = document.querySelector(".cast-img-three");
-const castPersonOne = document.querySelector(".cast-person-one");
-const castPersonTwo = document.querySelector(".cast-person-two");
-const castPersonThree = document.querySelector(".cast-person-three");
-const castCharacterOne = document.querySelector(".cast-char-one");
-const castCharacterTwo = document.querySelector(".cast-char-two");
-const castCharacterThree = document.querySelector(".cast-char-three");
+const castImgs = {
+  0: document.querySelector(".cast-img-one"),
+  1: document.querySelector(".cast-img-two"),
+  2: document.querySelector(".cast-img-three")
+};
+const personNames = {
+  0: document.querySelector(".cast-person-one"),
+  1: document.querySelector(".cast-person-two"),
+  2: document.querySelector(".cast-person-three")
+};
 
+const charNames = {
+  0: document.querySelector(".cast-char-one"),
+  1: document.querySelector(".cast-char-two"),
+  2: document.querySelector(".cast-char-three")
+};
+
+//api request to get the cats of the show
 const getCast = async id => {
   const response = await fetch(" http://api.tvmaze.com/shows/" + id + "/cast");
   const json = await response.json();
 
-  castImgOne.setAttribute("src", json[0].person.image.medium);
-  castImgTwo.setAttribute("src", json[1].person.image.medium);
-  castImgThree.setAttribute("src", json[2].person.image.medium);
+  //set all the cast tab attributes to empty strings
+  for (let i = 0; i < 3; i++) {
+    castImgs[i].setAttribute(
+      "src",
+      "https://image.flaticon.com/icons/png/512/37/37943.png"
+    );
+    personNames[i].textContent = "";
+    personNames[i].setAttribute("href", "#");
+    charNames[i].textContent = "";
+  }
 
-  castPersonOne.textContent = json[0].person.name;
-  castPersonOne.setAttribute("href", json[0].person.url);
-  castPersonTwo.textContent = json[1].person.name;
-  castPersonTwo.setAttribute("href", json[1].person.url);
-  castPersonThree.textContent = json[2].person.name;
-  castPersonThree.setAttribute("href", json[2].person.url);
-
-  console.log(json[0].character.name);
-
-  castCharacterOne.textContent = json[0].character.name;
-  castCharacterTwo.textContent = json[1].character.name;
-  castCharacterThree.textContent = json[2].character.name;
+  /*iterate over json response and if not null, displays the image, name
+   and character's name
+  */
+  for (let i = 0; i < 3; i++) {
+    if (json[i].person.image != null) {
+      castImgs[i].setAttribute("src", json[i].person.image.medium);
+    }
+    if (json[i].person.name != null) {
+      personNames[i].textContent = json[i].person.name;
+      personNames[i].setAttribute("href", json[i].person.url);
+    }
+    if (json[i].character.name != null) {
+      charNames[i].textContent = json[i].character.name;
+    }
+  }
 };

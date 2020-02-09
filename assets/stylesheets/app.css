@@ -17,10 +17,16 @@ body {
 .navbar-brand {
   font-family: "Josefin Sans", sans-serif;
 }
+
 .search {
   width: 100%;
   position: relative;
   display: flex;
+}
+@media screen and (max-width: 600px) {
+  .search {
+    width: 150%;
+  }
 }
 
 #searchTerm {
@@ -53,20 +59,29 @@ body {
 /*Resize the wrap to see the search bar change!*/
 .wrap {
   width: 30%;
-  position: absolute;
-  top: 50%;
+  position: fixed;
+  top: 25%;
   left: 50%;
+  right: 50%;
   transform: translate(-50%, -50%);
 }
 #container {
-  margin-top: 500px;
+  margin-top: 17rem;
 }
+
 .card {
-  margin: 0 auto; /* Added */
-  float: none; /* Added */
-  margin-bottom: 10px; /* Added */
+  max-width: 500px;
+  margin: 0 auto;
+  float: none;
   text-align: center;
 }
+
+@media screen and (max-width: 600px) {
+  .card {
+    top: 0%;
+  }
+}
+
 #card-title {
   margin-bottom: 10px;
 }
@@ -76,7 +91,7 @@ body {
 }
 .error {
   text-align: center;
-  margin: 10px auto;
+  margin: 100px auto;
   width: 400px;
 }
 

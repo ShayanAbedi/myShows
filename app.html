@@ -1,128 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-oOs/gFavzADqv3i5nCM+9CzXe3e5vXLXZ5LZ7PplpsWpTCufB7kqkTlC9FtZ5nJo"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/60f321e899.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./assets/stylesheets/app.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <script src="https://kit.fontawesome.com/60f321e899.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./assets/stylesheets/app.css" />
-
-  <title>MyShows</title>
-</head>
-
-<nav class="navbar fixed-top navbar-light bg-light ">
-  <a class="navbar-brand" href="./index.html">
-    MY
-    <img src="./logo.png" width="50" height="50" class="d-inline-block align-center" alt="MYSHOWS" />
-    SHOWS
-  </a>
-</nav>
-<form>
-  <div class="wrap">
-    <div class="search">
-      <input type="text" id="searchTerm" placeholder="Search ..." />
-      <button type="submit" class="searchButton">
-        <i class="fa fa-search fa-sm"></i>
-      </button>
-    </div>
-  </div>
-</form>
-
-
-<div class="error"></div>
-<div class="main loading">
-  <div class="tile tile1"></div>
-</div>
-<div id="container">
-
-  <div class="card text-white bg-dark mb-3">
-    <div class="card-header">
-      <ul class="nav nav-pills card-header-pills" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link showSum active" href="#summary" role="tab" data-toggle="tab"></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link cast" href="#cast" role="tab" data-toggle="tab">Cast</a>
-        </li>
-      </ul>
-    </div>
-    <div class="tab-content">
-      <div role="tabpanel" class="row no-gutters tab-pane fade show active" id="summary">
-        <div class="col-md-12">
-          <img src="" id="card-img" class="show-img" alt="show_name" />
-          <ul class="list-group"></ul>
+    <title>MyShows</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar fixed-top navbar-dark bg-primary">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="./index.html">
+            My
+            <img
+              src="./logo.png"
+              width="40"
+              height="40"
+              class="d-inline-block align-center"
+              alt="MYSHOWS"
+            />
+            Shows
+          </a>
         </div>
-        <div class="col-md-12">
-          <div class="card-body">
-            <h5 id="card-title"><strong id="c-title"></strong></h5>
-            <p id="card-text">
-            </p>
-            <p class="card-txt">
-              <a class="site" href="" target="_blank">Official Website</a>
-              <br>
-              <small class="text-muted rating"></small>
-            </p>
-
-            <div class="card-footer">
-              <small class="text-muted nextEp"></small>
+      </nav>
+      <div class="main-container">
+        <!-- Search -->
+        <form class="search-bar">
+          <input class="searched-term" type="text" placeholder="Search..." />
+          <button class="search-btn" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+        <!-- Error Alert -->
+        <div class="error"></div>
+        <!-- Loading  -->
+        <div class="main loading">
+          <div class="tile tile1"></div>
+        </div>
+        <!-- Info Card -->
+        <div class="info-card">
+          <div class="card text-center text-white bg-dark">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                  <a
+                    class="nav-link tab-show-name active"
+                    href="#summary"
+                    role="tab"
+                    data-toggle="tab"
+                  ></a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link tab-cast"
+                    href="#cast"
+                    role="tab"
+                    data-toggle="tab"
+                    >Cast</a
+                  >
+                </li>
+              </ul>
             </div>
-
+            <div class="tab-content">
+              <div
+                role="tabpanel"
+                class="row no-gutters tab-pane fade show active"
+                id="summary"
+              >
+                <div class="card-body">
+                  <img class="card-img-top" src="" alt="Card image cap" />
+                  <h5 class="card-title"></h5>
+                  <p class="card-text"></p>
+                  <a
+                    href=""
+                    target="_blank"
+                    class="btn btn-primary show-website"
+                    >Official Website</a
+                  >
+                  <br />
+                  <div class="card-footer text-muted next-ep"></div>
+                </div>
+              </div>
+              <div role="tabpanel" class="row tab-pane fade" id="cast">
+                <div class="card-body cast-tab">
+                  <div class="cast-one">
+                    <img src="" alt="" class="cast-img" />
+                    <p class="cast-name"></p>
+                    <small class="cast-character"></small>
+                  </div>
+                  <div class="cast-two">
+                    <img src="" alt="" class="cast-img" />
+                    <p class="cast-name"></p>
+                    <small class="cast-character"></small>
+                  </div>
+                  <div class="cast-three">
+                    <img src="" alt="" class="cast-img" />
+                    <p class="cast-name"></p>
+                    <small class="cast-character"></small>
+                  </div>
+                  <div class="cast-four">
+                    <img src="" alt="" class="cast-img" />
+                    <p class="cast-name"></p>
+                    <small class="cast-character"></small>
+                  </div>
+                  <div class="cast-five">
+                    <img src="" alt="" class="cast-img" />
+                    <p class="cast-name"></p>
+                    <small class="cast-character"></small>
+                  </div>
+                  <div class="cast-six">
+                    <img src="" alt="" class="cast-img" />
+                    <p class="cast-name"></p>
+                    <small class="cast-character"></small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="row tab-pane fade" id="cast">
-        <div class="cast-row">
-          <div class="column">
-            <img src="" class="cast-img-one cast-col" alt="show_name" />
-
-          </div>
-          <div class="column">
-            <img src="" class="cast-img-two cast-col" alt="show_name" />
-          </div>
-          <div class="column">
-            <img src="" class="cast-img-three cast-col" alt="show_name" />
-          </div>
-
-        </div>
-        <div class="cast-row">
-          <div class="column">
-            <a target="_blank" class="cast-person-one cast-col"></a>
-          </div>
-          <div class="column">
-            <a target="_blank" class="cast-person-two cast-col"></a>
-          </div>
-          <div class="column">
-            <a target="_blank" class="cast-person-three cast-col"></a>
-          </div>
-        </div>
-        <div class="cast-row">
-          <div class="column">
-            <small class="cast-char-one cast-col"></small>
-          </div>
-          <div class="column">
-            <small class="cast-char-two cast-col"></small>
-          </div>
-          <div class="column">
-            <small class="cast-char-three cast-col"></small>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</div>
 
-
-<script src="./app.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
+    <script src="./app.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
